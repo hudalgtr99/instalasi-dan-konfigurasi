@@ -13,6 +13,7 @@ function Header({name}){
 function App() {
   const [numbers, setNumbers] = useState(0);
   const [message, setMessage] = useState("");
+  const students = ['Miftahul', 'Huda', 'Guntara'];
 
   function plusClick() {
       if (numbers < 10) {
@@ -39,6 +40,14 @@ function App() {
 
   return (
       <div className="container">
+        <Header name= "Miftah"/>
+          <ul>
+              {
+                  students.map((student) => (
+                      <li key={student}>{student}</li>
+                  ))
+              }
+          </ul>
           <h1>Counter App</h1>
 
           <div className="button-container">
