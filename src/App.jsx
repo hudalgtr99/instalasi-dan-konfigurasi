@@ -1,16 +1,6 @@
-/* eslint-disable react/prop-types */
+/* eslint-disable no-unused-vars */
 import { useState } from 'react'
-
-// eslint-disable-next-line no-unused-vars
-function Header({name}){
-  return(            
-  //wajib menggunakan buka tutup    
-  <>
-      <h1>Belajar React bareng {name ? name : 'Miftah'}🚀</h1>
-      <img src="img/img.png" width="80" alt="My Image"/>
-      <p>Ini teks untuk template Belajar Latihan 1</p>
-  </>);
-}
+import Header from './components/Header';
 
 function App() {
   const [numbers, setNumbers] = useState(0);
