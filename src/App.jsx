@@ -11,8 +11,8 @@ function Header({name}){
 }
 
 function App() {
-  const [numbers, setNumbers] = React.useState(0);
-  const [message, setMessage] = React.useState("");
+  const [numbers, setNumbers] = useState(0);
+  const [message, setMessage] = useState("");
 
   function plusClick() {
       if (numbers < 10) {
