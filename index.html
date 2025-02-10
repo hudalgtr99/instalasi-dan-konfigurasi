@@ -1,13 +1,131 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React</title>
-  </head>
-  <body>
+<head>
+    <title>Latihan Simple</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <style>
+        .container {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px; /* Adds gap between buttons */
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:disabled {
+            background-color: #d3d3d3;
+            cursor: not-allowed;
+        }
+
+        .minus-btn {
+            background-color: #ff4d4d;
+        }
+
+        .plus-btn {
+            background-color: #4dff4d;
+        }
+
+        .reset-btn {
+            background-color: #4d90ff;
+        }
+
+    </style>
+</head>
+<body>
     <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+
+    <script type="text/babel">
+        const container = document.getElementById('root');
+        const root = ReactDOM.createRoot(container);
+
+        function Header({name}){
+            return(            
+            //wajib menggunakan buka tutup    
+            <>
+                <h1>Belajar React bareng {name ? name : 'Miftah'}🚀</h1>
+                <img src="img/img.png" width="80" alt="My Image"/>
+                <p>Ini teks untuk template Belajar Latihan 1</p>
+            </>);
+        }
+
+        function HomePage() {
+            const [numbers, setNumbers] = React.useState(0);
+            const [message, setMessage] = React.useState("");
+
+            function plusClick() {
+                if (numbers < 10) {
+                    setNumbers(numbers + 1);
+                    setMessage(""); // Reset pesan jika masih dalam batas
+                } else {
+                    setMessage("Done!");
+                }
+            }
+
+            function minusClick() {
+                if (numbers > 0) {
+                    setNumbers(numbers - 1);
+                    setMessage(""); // Reset pesan jika masih dalam batas
+                } else {
+                    setMessage("Done!");
+                }
+            }
+
+            function resetClick() {
+                setNumbers(0);
+                setMessage(""); // Reset pesan ke kosong
+            }
+
+            return (
+                <div className="container">
+                    <h1>Counter App</h1>
+
+                    <div className="button-container">
+
+                        <button 
+                            className="minus-btn" 
+                            onClick={minusClick}
+                            disabled={message === "Done!"}>
+                            -
+                        </button>
+
+                        <span className="counter-number">{message || numbers}</span>
+
+                        <button 
+                            className="plus-btn" 
+                            onClick={plusClick}
+                            disabled={message === "Done!"}>
+                            +
+                        </button><br/>
+
+                        <button 
+                            className="reset-btn" 
+                            onClick={resetClick} 
+                            disabled={message !== "Done!"}>
+                            Reset
+                        </button>
+                    </div>
+                </div>
+            );
+        }
+
+
+        root.render(<HomePage />);
+    </script>
+</body>
 </html>
